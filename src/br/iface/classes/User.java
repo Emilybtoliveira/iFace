@@ -1,4 +1,5 @@
 package br.iface.classes;
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -9,6 +10,8 @@ public class User {
     private List friends_requests;
     private List my_friends;
     private List chats;
+    private List my_communities;
+    private List my_posts;
 
     public User(){}
 
@@ -16,9 +19,12 @@ public class User {
         this.login = login;
         this.password = password;
         this.name = name;
+
         this.friends_requests = new ArrayList();
         this.my_friends = new ArrayList();
         this.chats = new ArrayList();
+        this.my_communities = new ArrayList();
+        this.my_posts = new ArrayList();
     }
 
     public String getLogin(){
@@ -74,5 +80,21 @@ public class User {
 
     public void setNewChat(MessageHistory messageHistory){
         this.chats.add(messageHistory);
+    }
+
+    public List getMyCommunities() {
+        return this.my_communities;
+    }
+
+    public void setNewCommunity(Community new_com) {
+        this.my_communities.add(new_com);
+    }
+
+    public List getMyPosts() {
+        return this.my_posts;
+    }
+
+    public void setNewPost(Post newPost) {
+        this.my_posts.add(newPost);
     }
 }

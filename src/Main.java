@@ -1,3 +1,4 @@
+import br.iface.classes.Feed;
 import br.iface.pages.*;
 import br.iface.classes.User;
 
@@ -20,6 +21,8 @@ public class Main {
         MainMenu mainMenuPage = new MainMenu();
         LogIn logInPage = new LogIn();
         MessageService messageServicePage = new MessageService();
+        Feed mainPublicFeed = new Feed();
+        CommunityMenu communityMenuPage = new CommunityMenu();
 
         System.out.println("Bem vindo ao iFace!");
 
@@ -55,8 +58,14 @@ public class Main {
             else if(op.equals("chats")){
                 messageServicePage.Menu(current_user, users);
             }
+            else if(op.equals("community")){
+                communityMenuPage.Menu(current_user, users);
+            }
             else if(op.equals("quit")){
                 return;
+            }
+            else{
+                System.out.println("Isso não é uma opção.\n");
             }
         }
     }
