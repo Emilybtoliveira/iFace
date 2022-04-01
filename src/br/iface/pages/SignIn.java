@@ -11,15 +11,21 @@ public class SignIn {
         this.users = new ArrayList();
     }
 
-    public String Input(){
+    public User Input(){
         String login, password, name;
         Scanner input = new Scanner(System.in);
 
-        System.out.println("Digite um login:");
+        while(true) {
+            System.out.println("Digite um login:");
+            login = input.next();
 
-        login = input.next();
-
-        System.out.printf("Login escolhido: %s\n", login);
+            if(existingLogin(login)){
+                System.out.println("Esse login já está sendo usado. Escolha outro.");
+            } else {
+                System.out.printf("Login escolhido: %s\n", login);
+                break;
+            }
+        }
 
         System.out.println("Digite uma senha:");
 
@@ -33,12 +39,12 @@ public class SignIn {
         name = input.nextLine();
 
         System.out.printf("Nome escolhido: %s\n", name);
-        System.out.printf("Você foi cadastrado!\n", name);
+        System.out.printf("Você foi cadastrado!\n\n", name);
 
         User new_user = new User(login, password, name);
         this.users.add(new_user);
 
-        return login;
+        return new_user;
     }
 
     public void printAllUsers(){
@@ -50,5 +56,16 @@ public class SignIn {
 
     public List getUsers(){
         return this.users;
+    }
+
+    private boolean existingLogin(String login){
+        User some_user;
+        for(int i = 0; i < this.users.size(); i++){
+            some_user = (User) this.users.get(i);
+            if(some_user.getLogin().equals(login)){
+                return true;
+            }
+        }
+        return false;
     }
 }
