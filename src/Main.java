@@ -21,8 +21,9 @@ public class Main {
         MainMenu mainMenuPage = new MainMenu();
         LogIn logInPage = new LogIn();
         MessageService messageServicePage = new MessageService();
-        Feed mainPublicFeed = new Feed();
         CommunityMenu communityMenuPage = new CommunityMenu();
+        Feed mainPublicFeed = new Feed();
+        FeedService feedServicePage = new FeedService();
 
         System.out.println("Bem vindo ao iFace!");
 
@@ -60,6 +61,9 @@ public class Main {
             }
             else if(op.equals("community")){
                 communityMenuPage.Menu(current_user, users);
+            }
+            else if(op.equals("feed")){
+                feedServicePage.Menu(current_user, mainPublicFeed);
             }
             else if(op.equals("quit")){
                 return;

@@ -31,7 +31,11 @@ public class Post {
         this.timestamp = dtf.format(LocalDateTime.now());
     }
 
-    public String getPost(){
-        return this.owner.getName()+"\t\t"+this.timestamp+"\n"+"@"+this.owner.getLogin()+"\n"+"\t"+this.content+"\n";
+    public String getFormattedPost(){
+        return this.owner.getName()+"\t\t"+this.timestamp+"\n"+"@"+this.owner.getLogin()+"\t"+this.privacy+" post\n"+"\t"+this.content+"\n";
+    }
+
+    public String getPostPrivacy(){
+        return this.privacy;
     }
 }

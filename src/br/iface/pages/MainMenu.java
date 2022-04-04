@@ -29,7 +29,8 @@ public class MainMenu {
         else{
             System.out.printf("Você está navegando como %s.\n", current_user.getLogin());
             System.out.println("Escolha uma opção:\n1. Alterar informações do usuário atual\n" +
-                    "2. Gerenciar amizades\n3. Chats\n4. Trocar de conta\n5. Comunidades\n6. Sair do programa");
+                    "2. Gerenciar amizades\n3. Chats\n4. Comunidades\n5. Feed \n6. Trocar de conta" +
+                    "\n7. Sair do programa");
 
             op = input.nextInt();
 
@@ -41,10 +42,12 @@ public class MainMenu {
                 case 3:
                     return "chats";
                 case 4:
-                    return "switchacc";
-                case 5:
                     return "community";
+                case 5:
+                    return "feed";
                 case 6:
+                    return "switchacc";
+                case 7:
                     return "quit";
                 default:
                     return "";

@@ -11,7 +11,7 @@ public class FriendsManagement {
     public FriendsManagement(){}
 
     public void Menu(User current_user, List users){
-        User some_user =  new User();
+        User some_user;
         int op, i, aux, n_pending;
         Scanner input = new Scanner(System.in);
 
@@ -52,9 +52,13 @@ public class FriendsManagement {
                     some_user.setMyFriends(current_user);
                     //decrementa o n_pending
                     n_pending--;
+                    //puxa as mensagens privadas do novo amigo para o feed do usuario e o contrario tbm
+                    FeedService feedServicePage = new FeedService();
+                    feedServicePage.moveFeedOver(current_user, some_user);
+                    feedServicePage.moveFeedOver(some_user, current_user);
 
                     if (n_pending == 0){
-                        System.out.println("Todas as suas soliticações pendentes foram aceitas. Você pode ver seus amigos selecionando no menu.");
+                        System.out.println("Todas as suas solicitações pendentes foram aceitas. Você pode ver seus amigos selecionando no menu.");
                         break;
                     }
                 }
@@ -109,6 +113,7 @@ public class FriendsManagement {
                     System.out.printf("%d. %s (%s)\n", i + 1, some_user.getName(), some_user.getLogin());
                 }
             }
+            System.out.println();
             return;
         }
 

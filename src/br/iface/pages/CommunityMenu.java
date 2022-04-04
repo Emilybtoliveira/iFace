@@ -92,7 +92,7 @@ public class CommunityMenu {
         Community chosen_com = (Community) communities.get(com_index);
 
         System.out.printf("\nComunidade %s\n", chosen_com.getName().toUpperCase(Locale.ROOT));
-        System.out.println("-----------------------------------\n");
+        System.out.println("-----------------------------------");
 
         if(chosen_com.getAdm().getLogin().equals(current_user.getLogin())){
             System.out.println("Escolha uma operação para realizar na comunidade:\n1. Adicionar um membro\n2. Fazer um post" +
@@ -177,7 +177,7 @@ public class CommunityMenu {
             for (int i = 0; i < n_posts; i++){
                 some_post = (Post) feed.get(i);
 
-                System.out.printf("%s\n", some_post.getPost());
+                System.out.printf("%s\n", some_post.getFormattedPost());
             }
         }
     }

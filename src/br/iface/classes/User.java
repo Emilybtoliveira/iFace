@@ -12,6 +12,7 @@ public class User {
     private List chats;
     private List my_communities;
     private List my_posts;
+    private Feed my_private_feed;
 
     public User(){}
 
@@ -25,6 +26,7 @@ public class User {
         this.chats = new ArrayList();
         this.my_communities = new ArrayList();
         this.my_posts = new ArrayList();
+        this.my_private_feed = new Feed();
     }
 
     public String getLogin(){
@@ -97,4 +99,9 @@ public class User {
     public void setNewPost(Post newPost) {
         this.my_posts.add(newPost);
     }
+
+    public Feed getMyPrivateFeed() {
+        return this.my_private_feed;
+    }
+
 }
