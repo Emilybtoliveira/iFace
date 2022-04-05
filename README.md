@@ -5,9 +5,11 @@ Implementadas as funcionalidades:
   1. Criação de Conta
   2. Criação/Edição de Perfil
   3. Inicio da solicitação de amizade
-
+ 
+ 
 **Update 05/04** -
 Implementadas as funcionalidades:
+
   3. Adição de amigos
   4. Envio de mensagens
   5. Criação de comunidades
