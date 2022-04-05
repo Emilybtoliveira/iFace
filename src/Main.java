@@ -62,6 +62,11 @@ public class Main {
             else if(op.equals("community")){
                 communityMenuPage.Menu(current_user, users);
             }
+            else if(op.equals("delete")){
+                RemoveAccount removeAccount = new RemoveAccount();
+                removeAccount.RemoveAccountRoutine(current_user, users, mainPublicFeed);
+                current_user = new User();
+            }
             else if(op.equals("feed")){
                 feedServicePage.Menu(current_user, mainPublicFeed);
             }

@@ -84,12 +84,20 @@ public class User {
         this.chats.add(messageHistory);
     }
 
+    public void removeChat(MessageHistory messageHistory){
+        this.chats.remove(messageHistory);
+    }
+
     public List getMyCommunities() {
         return this.my_communities;
     }
 
     public void setNewCommunity(Community new_com) {
         this.my_communities.add(new_com);
+    }
+
+    public void removeFromCommunity(Community com) {
+        this.my_communities.remove(com);
     }
 
     public List getMyPosts() {
@@ -104,4 +112,16 @@ public class User {
         return this.my_private_feed;
     }
 
+    public void deleteAllInfo(){
+        this.login = null;
+        this.password = null;
+        this.name = null;
+
+        this.friends_requests = null;
+        this.my_friends = null;
+        this.chats = null;
+        this.my_communities = null;
+        this.my_posts = null;
+        this.my_private_feed = null;
+    }
 }

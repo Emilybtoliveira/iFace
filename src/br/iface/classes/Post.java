@@ -38,4 +38,8 @@ public class Post {
     public String getPostPrivacy(){
         return this.privacy;
     }
+
+    public User getOwner() {
+        return owner;
+    }
 }

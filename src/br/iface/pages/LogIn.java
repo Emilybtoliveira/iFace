@@ -15,12 +15,12 @@ public class LogIn {
         User some_user =  new User();
 
         while(true){
-            System.out.println("Digite 1 para cancelar a operação a qualquer momento.");
+            System.out.println("Digite 0 para cancelar a operação a qualquer momento.");
 
             System.out.println("Digite seu login:");
             login = input.next();
 
-            if (isQuit(login)){return some_user;}
+            if (isQuit(login)){ return some_user;}
             System.out.printf("Login digitado: %s\n", login);
 
             System.out.println("Digite a senha:");
@@ -47,6 +47,6 @@ public class LogIn {
     }
 
     private boolean isQuit(String input){
-        return (input.equals("1")?true:false);
+        return (input.equals("0")?true:false);
     }
 }

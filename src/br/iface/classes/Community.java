@@ -40,11 +40,19 @@ public class Community {
         this.members.add(new_member);
     }
 
+    public void removeMember(User member){
+        this.members.remove(member);
+    }
+
     public void addPostToFeed(Post new_post){
         this.feed.newPost(new_post);
     }
 
-    public List getFeed(){
+    public List getFeedPosts(){
         return this.feed.getPosts();
+    }
+
+    public Feed getFeed(){
+        return this.feed;
     }
 }

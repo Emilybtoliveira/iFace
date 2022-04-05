@@ -164,7 +164,7 @@ public class CommunityMenu {
 
     private void showFeed(Community chosen_com){
         Post some_post;
-        List feed = chosen_com.getFeed();
+        List feed = chosen_com.getFeedPosts();
         int n_posts = feed.size();
 
         if(n_posts == 0){
