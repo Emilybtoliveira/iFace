@@ -69,5 +69,6 @@ public class RemoveAccount {
         //remove as informações do usuario
         current_user.deleteAllInfo();
 
+        System.out.println("Seus dados e sua conta foram excluídos. Se mudar de ideia, cadastre-se novamente!:)\n")
     }
 }
