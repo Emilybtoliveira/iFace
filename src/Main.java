@@ -63,7 +63,7 @@ public class Main {
                 communityMenuPage.Menu(current_user, users);
             }
             else if(op.equals("delete")){
-                System.out.printf("Tem certeza de que deseja excluir sua conta? Todas as suas informações, mensagens e posts serão apagados. (S/N)");
+                System.out.printf("Tem certeza de que deseja excluir sua conta? Todas as suas informações, mensagens e posts serão apagados. (S/N) ");
                 bool = input.next();
 
                 if(bool.equals("s") || bool.equals("S")){
