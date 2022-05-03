@@ -1,17 +1,23 @@
 package br.iface.pages;
 import java.util.Scanner;
-import br.iface.classes.User;
+
+import br.iface.controllers.SignInController;
+import br.iface.entities.User;
+import br.iface.entities.relationships.UserData;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class SignIn {
-    private List users;
+    private List<User> users;
+    private SignInController signInController;
 
-    public SignIn(){
-        this.users = new ArrayList();
+    public SignIn(List<User> users){
+        this.users = users;
+        signInController = new SignInController(users);
     }
 
-    public User Input(){
+    public User Menu(){
         String login, password, name;
         Scanner input = new Scanner(System.in);
 
@@ -19,7 +25,7 @@ public class SignIn {
             System.out.println("Digite um login:");
             login = input.next();
 
-            if(existingLogin(login)){
+            if(signInController.existingLogin(login)){
                 System.out.println("Esse login já está sendo usado. Escolha outro.");
             } else {
                 System.out.printf("Login escolhido: %s\n", login);
@@ -39,33 +45,12 @@ public class SignIn {
         name = input.nextLine();
 
         System.out.printf("Nome escolhido: %s\n", name);
-        System.out.printf("Você foi cadastrado!\n\n", name);
 
-        User new_user = new User(login, password, name);
-        this.users.add(new_user);
+        //fazer uma verificação de que funcionou
+        User new_user = signInController.createsAccount(login, password, name);
 
+        System.out.println("Você foi cadastrado!\n");
         return new_user;
     }
-
-    public void printAllUsers(){
-        for (int i = 0; i < this.users.size(); i++){
-            User user = (User) this.users.get(i);
-            System.out.printf("%s %s %s\n", user.getLogin(), user.getPass(), user.getName());
-        }
-    }
-
-    public List getUsers(){
-        return this.users;
-    }
-
-    private boolean existingLogin(String login){
-        User some_user;
-        for(int i = 0; i < this.users.size(); i++){
-            some_user = (User) this.users.get(i);
-            if(some_user.getLogin().equals(login)){
-                return true;
-            }
-        }
-        return false;
-    }
 }
+

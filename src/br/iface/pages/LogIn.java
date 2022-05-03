@@ -1,18 +1,25 @@
 package br.iface.pages;
 
-import br.iface.classes.User;
+import br.iface.controllers.LogInController;
+import br.iface.entities.User;
+import br.iface.entities.relationships.UserData;
 
 import java.util.List;
 import java.util.Scanner;
 
 public class LogIn {
+    private List<User> users;
+    private LogInController logInController;
 
-    public LogIn(){}
+    public LogIn(List<User> users){
+        this.users = users;
+        this.logInController = new LogInController(users);
+    }
 
-    public User Input(List users){
+    public User Menu(){
         String login, password;
         Scanner input = new Scanner(System.in);
-        User some_user =  new User();
+        User some_user = new UserData();
 
         while(true){
             System.out.println("Digite 0 para cancelar a operação a qualquer momento.");
@@ -29,20 +36,7 @@ public class LogIn {
 
             System.out.printf("Senha digitada: %s\n", password);
 
-            for (int i = 0; i < users.size(); i++) {
-                some_user = (User) users.get(i);
-                if (some_user.getLogin().equals(login)) {
-                    if(some_user.getPass().equals(password)) {
-                        System.out.println("Login bem sucedido!\n");
-                        return some_user;
-                    }
-                    else{
-                        break;
-                    }
-                }
-            }
-            some_user =  new User();
-            System.out.println("Senha ou login incorreto\n");
+            return this.logInController.authentication(login, password);
         }
     }
 

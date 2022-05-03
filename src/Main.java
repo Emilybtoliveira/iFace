@@ -1,6 +1,7 @@
-import br.iface.classes.Feed;
 import br.iface.pages.*;
-import br.iface.classes.User;
+import br.iface.entities.*;
+import br.iface.entities.relationships.UserData;
+import br.iface.entities.relationships.UserFeed;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,16 +15,18 @@ public class Main {
         Scanner input = new Scanner(System.in);
 
         //variáveis de objetos
-        List users = new ArrayList();
-        User current_user = new User();
-        SignIn signInPage = new SignIn();
-        UpdateProfile updateProfilePage = new UpdateProfile();
+        List<User> users = new ArrayList();
+        User current_user = new UserData();
+        UserFeed mainPublicFeed = new UserFeed();
+
+        SignIn signInPage = new SignIn(users);
+        UpdateProfile updateProfilePage = new UpdateProfile(users);
         MainMenu mainMenuPage = new MainMenu();
-        LogIn logInPage = new LogIn();
-        MessageService messageServicePage = new MessageService();
-        CommunityMenu communityMenuPage = new CommunityMenu();
-        Feed mainPublicFeed = new Feed();
-        FeedService feedServicePage = new FeedService();
+        LogIn logInPage = new LogIn(users);
+        MessagingService messagingServicePage = new MessagingService(users);
+        CommunityManagement communityManagementPage = new CommunityManagement(users);
+        FeedService feedServicePage = new FeedService(mainPublicFeed);
+        FriendsManagement friendsManagementPage = new FriendsManagement(users);
 
         System.out.println("Bem vindo ao iFace!");
 
@@ -32,35 +35,33 @@ public class Main {
             //SignIn
             if (op.equals("signin")) {
 
-                current_user = signInPage.Input();
-
-                users = signInPage.getUsers();
+                current_user = signInPage.Menu();
+                //users.add(current_user);
                 //signInPage.printAllUsers();
             }
             else if(op.equals("login")){
-                current_user = logInPage.Input(users);
+                current_user = logInPage.Menu();
             }
             else if (op.equals("update")){
-                current_user = updateProfilePage.Input(current_user, users);
+                updateProfilePage.Menu(current_user);
             }
             else if(op.equals("friendsmanage")){
-                FriendsManagement friendsManagementPage = new FriendsManagement();
-                friendsManagementPage.Menu(current_user, users);
+                friendsManagementPage.Menu(current_user);
             }
             else if (op.equals("switchacc")){
                 System.out.println("Deseja sair do perfil atual?S/N");
                 bool = input.next();
 
                 if(bool.equals("s") || bool.equals("S")){
-                    current_user = new User();
+                    current_user = new UserData();
                     System.out.println("Você foi deslogado.\n");
                 }
             }
             else if(op.equals("chats")){
-                messageServicePage.Menu(current_user, users);
+                messagingServicePage.Menu(current_user);
             }
             else if(op.equals("community")){
-                communityMenuPage.Menu(current_user, users);
+                communityManagementPage.Menu(current_user);
             }
             else if(op.equals("delete")){
                 System.out.printf("Tem certeza de que deseja excluir sua conta? Todas as suas informações, mensagens e posts serão apagados. (S/N) ");
@@ -69,11 +70,11 @@ public class Main {
                 if(bool.equals("s") || bool.equals("S")){
                     RemoveAccount removeAccount = new RemoveAccount();
                     removeAccount.RemoveAccountRoutine(current_user, users, mainPublicFeed);
-                    current_user = new User();
+                    current_user = new UserData();
                 }         
             }
             else if(op.equals("feed")){
-                feedServicePage.Menu(current_user, mainPublicFeed);
+                feedServicePage.Menu(current_user);
             }
             else if(op.equals("quit")){
                 return;

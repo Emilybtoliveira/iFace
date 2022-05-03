@@ -1,21 +1,19 @@
-package br.iface.classes;
+package br.iface.entities;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Community {
+public abstract class Community {
     private User adm; //usuario criador
     private String name;
     private String description;
-    private List members;
-    private Feed feed;
+    private List<User> members;
 
     public Community(User adm, String name, String description){
         this.adm = adm;
         this.name = name;
         this.description = description;
         this.members = new ArrayList();
-        this.feed = new Feed();
 
         this.members.add(adm);
     }
@@ -32,7 +30,7 @@ public class Community {
         return this.description;
     }
 
-    public List getMembers(){
+    public List<User> getMembers(){
         return this.members;
     }
 
@@ -44,15 +42,4 @@ public class Community {
         this.members.remove(member);
     }
 
-    public void addPostToFeed(Post new_post){
-        this.feed.newPost(new_post);
-    }
-
-    public List getFeedPosts(){
-        return this.feed.getPosts();
-    }
-
-    public Feed getFeed(){
-        return this.feed;
-    }
 }

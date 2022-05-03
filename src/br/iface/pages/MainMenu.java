@@ -1,6 +1,6 @@
 package br.iface.pages;
 
-import br.iface.classes.User;
+import br.iface.entities.User;
 
 import java.util.Scanner;
 

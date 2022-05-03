@@ -1,28 +1,26 @@
 package br.iface.pages;
 
-import br.iface.classes.User;
+import br.iface.controllers.UpdateProfileController;
+import br.iface.entities.User;
 
 import java.util.List;
 import java.util.Scanner;
 
 public class UpdateProfile {
-    public UpdateProfile(){}
+    private List<User> users;
+    private UpdateProfileController updateProfileController;
 
-    public User Input(User current_login, List users){
+    public UpdateProfile(List<User> users){
+        this.users = users;
+        this.updateProfileController = new UpdateProfileController(users);
+    }
+
+    public void Menu(User current_login){
         String login, password, name;
         Scanner input = new Scanner(System.in);
-        //User some_user = new User();
-
-        if(users.size() == 0){
-            System.out.println("Não existem usuários cadastrados ainda :(");
-            return current_login;
-        } else if (current_login.getLogin() == null){
-            System.out.println("Você não está logado.");
-            return current_login;
-        }
 
         System.out.println("Essas são suas informações cadastradas:");
-        System.out.printf("Login:%s Senha:%s Nome:%s\n", current_login.getLogin(), current_login.getPass(), current_login.getName());
+        System.out.println(current_login);
 
         while (true){
             System.out.println("Qual informação você quer modificar?\n1. Login\n2. Senha\n3. Nome\n4.Nenhuma");
@@ -34,7 +32,7 @@ public class UpdateProfile {
                 login = input.next();
                 System.out.printf("Login escolhido: %s\n", login);
 
-                current_login.setLogin(login);
+                updateProfileController.updateLogin(current_login, login);
             }
             else if (op == 2){
                 System.out.println("Digite a nova senha:");
@@ -42,7 +40,7 @@ public class UpdateProfile {
                 password = input.next();
 
                 System.out.printf("Senha escolhida: %s\n", password);
-                current_login.setPass(password);
+                updateProfileController.updatePass(current_login, password);
             }
             else if(op == 3){
                 System.out.println("Digite o novo nome que será exibido no seu perfil:");
@@ -51,11 +49,11 @@ public class UpdateProfile {
                 name = input.nextLine();
 
                 System.out.printf("Nome escolhido: %s\n", name);
-                current_login.setName(name);
+                updateProfileController.updateName(current_login, name);
             }
             else{
-                System.out.printf("Alterações feitas com sucesso! Suas novas informações são:\nLogin:%s Senha:%s Nome:%s\n\n", current_login.getLogin(), current_login.getPass(), current_login.getName());
-                return current_login;
+                System.out.printf("Alterações feitas com sucesso! Suas novas informações são:\n%s", current_login);
+                return;
             }
         }
     }
