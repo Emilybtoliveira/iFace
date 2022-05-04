@@ -3,12 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="5b5edda6-53a5-4e91-89e3-e9e9de5a58b8" name="Changes" comment="ajuste final">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/iface/controllers/FriendsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/iface/controllers/FriendsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/iface/controllers/MessagingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/iface/controllers/MessagingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/iface/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/iface/entities/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/iface/entities/relationships/UserData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/iface/entities/relationships/UserData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/iface/pages/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/iface/pages/MainMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/iface/pages/RemoveAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/iface/pages/RemoveAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/iface/pages/UpdateProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/iface/pages/UpdateProfile.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +75,8 @@
       <workItem from="1651142558063" duration="26912000" />
       <workItem from="1651234915097" duration="8917000" />
       <workItem from="1651438088865" duration="12382000" />
-      <workItem from="1651622586295" duration="4201000" />
+      <workItem from="1651622586295" duration="5562000" />
+      <workItem from="1651681790466" duration="2218000" />
     </task>
     <task id="LOCAL-00001" summary="ajuste final">
       <created>1649274134143</created>

@@ -23,7 +23,7 @@ public class UpdateProfile {
         System.out.println(current_login);
 
         while (true){
-            System.out.println("Qual informação você quer modificar?\n1. Login\n2. Senha\n3. Nome\n4.Nenhuma");
+            System.out.println("Qual informação você quer modificar?\n1. Login\n2. Senha\n3. Nome\n4. Nenhuma");
 
             int op = input.nextInt();
 
@@ -52,7 +52,7 @@ public class UpdateProfile {
                 updateProfileController.updateName(current_login, name);
             }
             else{
-                System.out.printf("Alterações feitas com sucesso! Suas novas informações são:\n%s", current_login);
+                System.out.printf("Alterações feitas com sucesso! Suas novas informações são:\n%s\n\n", current_login);
                 return;
             }
         }
