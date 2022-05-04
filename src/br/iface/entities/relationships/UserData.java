@@ -48,6 +48,9 @@ public class UserData extends User {
     public void setNewFriend(User friend_username) {
         this.my_friends.add(friend_username);
     }
+    public void removeAFriend(User friend_username){
+        this.my_friends.remove(friend_username);
+    }
 
     /*Message Service Data Management*/
     public List<MessageFeed> getChats(){

@@ -13,7 +13,7 @@ public class MainMenu {
 
         if (current_user.getName() == null) {
 
-            System.out.println("Escolha uma opção:\n1. Fazer login\n2. Cadastrar e logar como novo usuário \n3. Sair do programa");
+            System.out.println("Escolha uma opcao:\n1. Fazer login\n2. Cadastrar e logar como novo usuário \n3. Sair do programa");
 
             op = input.nextInt();
 

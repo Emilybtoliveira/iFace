@@ -21,7 +21,6 @@ public class FriendsController {
         Scanner input = new Scanner(System.in);
 
         current_user_data = (UserData) current_user;
-        some_user_data = (UserData) some_user;
 
         if(current_user_data.getFriendsRequests().size() == 0){ //se nao existir
             System.out.println("Você não tem solicitações pendentes.\n");
@@ -48,11 +47,12 @@ public class FriendsController {
             else{
                 //pega o usuario escolhido
                 some_user = current_user_data.getFriendsRequests().get(op-1);
+                some_user_data = (UserData) some_user;
                 //remove pending
                 current_user_data.removeFriendRequest(some_user);
                 //adiciona o usuario à lista de friends de current_user_data
                 current_user_data.setNewFriend(some_user);
-                //adiciona current_user_data à lista de friends de some_user
+                //adiciona current_user à lista de friends de some_user
                 some_user_data.setNewFriend(current_user);
                 //decrementa o n_pending
                 n_pending--;

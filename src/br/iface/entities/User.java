@@ -45,6 +45,6 @@ public abstract class User {
 
     @Override
     public String toString() {
-        return "Login: "+ getLogin() + "Senha: "+getPass()+ "Nome: "+getName();
+        return "Login: "+ getLogin() + " Senha: "+getPass()+ " Nome: "+getName();
     }
 }

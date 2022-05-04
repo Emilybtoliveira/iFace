@@ -12,7 +12,6 @@ public class RemoveAccount {
         int i;
         User some_user;
         CommunityFeed some_com;
-        UserFeed some_feed;
         MessageFeed some_msg_feed;
         UserData current_user_data = (UserData) current_user;
 
@@ -21,8 +20,7 @@ public class RemoveAccount {
             some_user = current_user_data.getMyfriends().get(i);
             UserData some_user_data = (UserData) some_user;
 
-            some_user_data.getMyfriends().remove(current_user);
-            some_user_data.removeFriendRequest(current_user); //se existir
+            some_user_data.removeAFriend(current_user);
 
             //excluir posts do feed privado
             some_user_data.getMyPrivateFeed().removeMessagesFromUser(current_user);
