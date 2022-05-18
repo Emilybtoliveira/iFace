@@ -6,6 +6,7 @@ import br.iface.entities.User;
 import br.iface.entities.relationships.CommunityFeed;
 import br.iface.entities.relationships.UserData;
 
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
@@ -64,31 +65,40 @@ public class CommunityController {
         System.out.printf("\nComunidade %s\n", chosen_com.getName().toUpperCase(Locale.ROOT));
         System.out.println("-----------------------------------");
 
-        if(chosen_com.getAdm().getLogin().equals(current_user.getLogin())){
-            System.out.println("Escolha uma operação para realizar na comunidade:\n1. Adicionar um membro\n2. Fazer um post" +
-                    "\n3. Ver o feed\nDigite 0 para cancelar a operação.");
+        while (true) {
+            try {
+                if (chosen_com.getAdm().getLogin().equals(current_user.getLogin())) {
+                    System.out.println("Escolha uma operação para realizar na comunidade:\n1. Adicionar um membro\n2. Fazer um post" +
+                            "\n3. Ver o feed\nDigite qualquer número para cancelar a operação.");
 
-            op = input.nextInt();
-            if(op == 1){
-                System.out.print("Digite o login do usuário que quer adicionar: ");
-                aux = input.next();
+                    op = input.nextInt();
+                    if (op == 1) {
+                        System.out.print("Digite o login do usuário que quer adicionar: ");
+                        aux = input.next();
 
-                addAMember(aux, chosen_com);
-            }
-            else if(op == 2) {
-                createNewPost(current_user_data, chosen_com);
-            }
-            else if(op == 3) {
-                showFeed(chosen_com);
-            }
-        } else {
-            System.out.println("Escolha uma operação para realizar na comunidade:\n1. Fazer um post\n2. Ver o feed\nDigite 0 para cancelar a operação.");
+                        addAMember(aux, chosen_com);
+                    } else if (op == 2) {
+                        createNewPost(current_user_data, chosen_com);
+                    } else if (op == 3) {
+                        showFeed(chosen_com);
+                    }
+                    else{
+                        System.out.println("Operação cancelada.\n");
+                    }
+                } else {
+                    System.out.println("Escolha uma operação para realizar na comunidade:\n1. Fazer um post\n2. Ver o feed\nDigite qualquer número para cancelar a operação.");
 
-            op = input.nextInt();
-            if(op == 1) {
-                createNewPost(current_user_data, chosen_com);
-            } else if(op == 2){
-                showFeed(chosen_com);
+                    op = input.nextInt();
+                    if (op == 1) {
+                        createNewPost(current_user_data, chosen_com);
+                    } else if (op == 2) {
+                        showFeed(chosen_com);
+                    }
+                }
+                return;
+            } catch (InputMismatchException e){
+                input.next(); //limpa o buffer
+                System.out.println("Você precisa inserir um número.\n");
             }
         }
     }

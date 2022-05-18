@@ -4,6 +4,7 @@ import br.iface.entities.User;
 import br.iface.entities.relationships.UserData;
 import br.iface.pages.FeedService;
 
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -15,7 +16,7 @@ public class FriendsController {
     }
 
     public void manageFriendsRequests(User current_user){
-        User some_user = new UserData();
+        User some_user;
         UserData current_user_data, some_user_data;
         int op, n_pending;
         Scanner input = new Scanner(System.in);
@@ -35,36 +36,39 @@ public class FriendsController {
             }
         }
         while(true){
-            System.out.println("Digite o número da solicitação que você deseja aceitar. Digite 0 para cancelar a operação.");
-            op = input.nextInt();
+            try {
+                System.out.println("Digite o número da solicitação que você deseja aceitar. Digite 0 para cancelar a operação.");
+                op = input.nextInt();
 
-            if(op == 0){
-                return;
-            }
-            else if (op > n_pending){
-                System.out.println("Essa opção não existe.");
-            }
-            else{
-                //pega o usuario escolhido
-                some_user = current_user_data.getFriendsRequests().get(op-1);
-                some_user_data = (UserData) some_user;
-                //remove pending
-                current_user_data.removeFriendRequest(some_user);
-                //adiciona o usuario à lista de friends de current_user_data
-                current_user_data.setNewFriend(some_user);
-                //adiciona current_user à lista de friends de some_user
-                some_user_data.setNewFriend(current_user);
-                //decrementa o n_pending
-                n_pending--;
-                //puxa as mensagens privadas do novo amigo para o feed do usuario e o contrario tbm
-                FeedController feedController = new FeedController();
-                feedController.moveFeedOver(current_user_data, some_user_data);
-                feedController.moveFeedOver(some_user_data, current_user_data);
+                if (op == 0) {
+                    return;
+                } else if (op > n_pending || op < 0) {
+                    System.out.println("Essa opção não existe.");
+                } else {
+                    //pega o usuario escolhido
+                    some_user = current_user_data.getFriendsRequests().get(op - 1);
+                    some_user_data = (UserData) some_user;
+                    //remove pending
+                    current_user_data.removeFriendRequest(some_user);
+                    //adiciona o usuario à lista de friends de current_user_data
+                    current_user_data.setNewFriend(some_user);
+                    //adiciona current_user à lista de friends de some_user
+                    some_user_data.setNewFriend(current_user);
+                    //decrementa o n_pending
+                    n_pending--;
+                    //puxa as mensagens privadas do novo amigo para o feed do usuario e o contrario tbm
+                    FeedController feedController = new FeedController();
+                    feedController.moveFeedOver(current_user_data, some_user_data);
+                    feedController.moveFeedOver(some_user_data, current_user_data);
 
-                if (n_pending == 0){
-                    System.out.println("Todas as suas solicitações pendentes foram aceitas. Você pode ver seus amigos selecionando no menu.");
-                    break;
+                    if (n_pending == 0) {
+                        System.out.println("Todas as suas solicitações pendentes foram aceitas. Você pode ver seus amigos selecionando no menu.");
+                        return;
+                    }
                 }
+            } catch(InputMismatchException e){
+                input.next(); //limpa o buffer
+                System.out.println("Você precisa inserir um número.\n");
             }
         }
     }

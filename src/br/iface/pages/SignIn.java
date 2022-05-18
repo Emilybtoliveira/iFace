@@ -34,14 +34,12 @@ public class SignIn {
         }
 
         System.out.println("Digite uma senha:");
-
         password = input.next();
 
         System.out.printf("Senha escolhida: %s\n", password);
         input.nextLine();
 
         System.out.println("Digite o nome que será exibido no seu perfil:");
-
         name = input.nextLine();
 
         System.out.printf("Nome escolhido: %s\n", name);

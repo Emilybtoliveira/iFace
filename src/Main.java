@@ -34,7 +34,6 @@ public class Main {
             op = mainMenuPage.Menu(current_user);
             //SignIn
             if (op.equals("signin")) {
-
                 current_user = signInPage.Menu();
                 //users.add(current_user);
                 //signInPage.printAllUsers();
@@ -71,7 +70,10 @@ public class Main {
                     RemoveAccount removeAccount = new RemoveAccount();
                     removeAccount.RemoveAccountRoutine(current_user, users, mainPublicFeed);
                     current_user = new UserData();
-                }         
+                }
+                else{
+                    System.out.println("Operação cancelada.\n");
+                }
             }
             else if(op.equals("feed")){
                 feedServicePage.Menu(current_user);
