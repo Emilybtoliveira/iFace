@@ -54,6 +54,10 @@ public class Main {
                 if(bool.equals("s") || bool.equals("S")){
                     current_user = new UserData();
                     System.out.println("Você foi deslogado.\n");
+                } else if(bool.equals("n") || bool.equals("N")){
+                    System.out.println("Operação cancelada.\n");
+                } else{
+                    System.out.println("Opção inexistente. Abortado.\n");
                 }
             }
             else if(op.equals("chats")){
@@ -70,9 +74,10 @@ public class Main {
                     RemoveAccount removeAccount = new RemoveAccount();
                     removeAccount.RemoveAccountRoutine(current_user, users, mainPublicFeed);
                     current_user = new UserData();
-                }
-                else{
+                } else if(bool.equals("n") || bool.equals("N")){
                     System.out.println("Operação cancelada.\n");
+                } else{
+                    System.out.println("Opção inexistente. Abortado.\n");
                 }
             }
             else if(op.equals("feed")){

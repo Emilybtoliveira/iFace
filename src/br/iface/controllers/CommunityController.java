@@ -86,7 +86,8 @@ public class CommunityController {
                         System.out.println("Operação cancelada.\n");
                     }
                 } else {
-                    System.out.println("Escolha uma operação para realizar na comunidade:\n1. Fazer um post\n2. Ver o feed\nDigite qualquer número para cancelar a operação.");
+                    System.out.println("Escolha uma operação para realizar na comunidade:\n1. Fazer um post\n2. Ver o feed" +
+                            "\nDigite qualquer número para cancelar a operação.");
 
                     op = input.nextInt();
                     if (op == 1) {

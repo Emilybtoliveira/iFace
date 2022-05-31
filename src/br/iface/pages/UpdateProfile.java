@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class UpdateProfile {
     private List<User> users;
-    private UpdateProfileController updateProfileController;
+    private final UpdateProfileController updateProfileController;
 
     public UpdateProfile(List<User> users){
         this.users = users;
@@ -20,8 +20,9 @@ public class UpdateProfile {
     public void Menu(User current_login){
         String login, password, name;
         Scanner input = new Scanner(System.in);
+        SignIn signInProcedure = new SignIn(this.users);
 
-        System.out.println("Essas são suas informações cadastradas:");
+        System.out.println("\nEssas são suas informações cadastradas:");
         System.out.println(current_login);
 
         while (true){
@@ -30,30 +31,28 @@ public class UpdateProfile {
 
                 int op = input.nextInt();
 
-                if (op == 1) {
-                    System.out.println("Digite o novo login:");
-                    login = input.next();
-                    System.out.printf("Login escolhido: %s\n", login);
+                if(op > 0 && op < 5) {
+                    System.out.println("\nDigite 0 a qualquer momento para cancelar a operação.");
 
-                    updateProfileController.updateLogin(current_login, login);
-                } else if (op == 2) {
-                    System.out.println("Digite a nova senha:");
-
-                    password = input.next();
-
-                    System.out.printf("Senha escolhida: %s\n", password);
-                    updateProfileController.updatePass(current_login, password);
-                } else if (op == 3) {
-                    System.out.println("Digite o novo nome que será exibido no seu perfil:");
-
-                    input.nextLine();
-                    name = input.nextLine();
-
-                    System.out.printf("Nome escolhido: %s\n", name);
-                    updateProfileController.updateName(current_login, name);
-                } else if(op == 4) {
-                    System.out.printf("Alterações feitas com sucesso! Suas novas informações são:\n%s\n\n", current_login);
-                    return;
+                    if (op == 1) {
+                        login = signInProcedure.loginInput();
+                        if (!login.equals("")) {
+                            updateProfileController.updateLogin(current_login, login);
+                        }
+                    } else if (op == 2) {
+                        password = signInProcedure.passwordInput();
+                        if (!password.equals("")) {
+                            updateProfileController.updatePass(current_login, password);
+                        }
+                    } else if (op == 3) {
+                        name = signInProcedure.nameInput();
+                        if (!name.equals("")) {
+                            updateProfileController.updateName(current_login, name);
+                        }
+                    } else {
+                        System.out.printf("Alterações feitas com sucesso! Suas novas informações são:\n%s\n\n", current_login);
+                        return;
+                    }
                 }
                 else{
                     System.out.println("Isso não é uma opção.\n");

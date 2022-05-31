@@ -17,14 +17,15 @@ public class MessagingService {
     }
 
     public void Menu(User current_user) {
-        int op;
+        int op = 0;
         Scanner input = new Scanner(System.in);
 
         while (true) {
             try {
-                System.out.println("Escolha uma opção:\n1. Ver minhas conversas\n2. Iniciar um novo chat\n3. Voltar");
-                op = input.nextInt();
-
+                if (op == 0) {
+                    System.out.println("Escolha uma opção:\n1. Ver minhas conversas\n2. Iniciar um novo chat\nDigite qualquer outro número para voltar.");
+                    op = input.nextInt();
+                }
                 if (op == 1) {
                     messagingController.showActiveChats(current_user);
                 } else if (op == 2) {

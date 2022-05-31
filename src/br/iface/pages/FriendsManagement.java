@@ -23,7 +23,7 @@ public class FriendsManagement {
         while (true) {
             try {
                 System.out.printf("Escolha uma opção:\n1. Ver minhas solicitações recebidas\n" +
-                        "2. Enviar nova solicitação de amizade.\n3. Ver minhas amizades\n4. Cancelar\n");
+                        "2. Enviar nova solicitação de amizade.\n3. Ver minhas amizades\nDigite qualquer outro numero para cancelar a operação.\n");
                 op = input.nextInt();
 
                 //Ver minhas solicitações

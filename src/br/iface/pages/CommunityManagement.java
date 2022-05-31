@@ -39,6 +39,8 @@ public class CommunityManagement {
                     } else {
                         System.out.println("Operação cancelada.");
                     }
+
+                    return;
                 } else if (op == 2) {
                     input.nextLine();
 
@@ -51,12 +53,14 @@ public class CommunityManagement {
                         String description = input.nextLine();
 
                         communityController.createACommunity(current_user, name, description);
-                        return;
                     } else {
                         System.out.println("Operação cancelada\n");
                     }
+
+                    return;
+                } else{
+                    System.out.println("Essa opção não existe.\n");
                 }
-                return;
             }catch (InputMismatchException e){
                 input.next(); //limpa o buffer
                 System.out.println("Você precisa inserir um número.\n");

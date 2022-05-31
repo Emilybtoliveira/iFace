@@ -8,11 +8,9 @@ import java.util.List;
 import java.util.Scanner;
 
 public class LogIn {
-    private List<User> users;
-    private LogInController logInController;
+    private final LogInController logInController;
 
     public LogIn(List<User> users){
-        this.users = users;
         this.logInController = new LogInController(users);
     }
 
@@ -28,15 +26,23 @@ public class LogIn {
             login = input.next();
 
             if (isQuit(login)){ return some_user;}
-            System.out.printf("Login digitado: %s\n", login);
+            //System.out.printf("Login digitado: %s\n", login);
 
             System.out.println("Digite a senha:");
             password = input.next();
+
             if (isQuit(password)){return some_user;}
 
-            System.out.printf("Senha digitada: %s\n", password);
+            //System.out.printf("Senha digitada: %s\n", password);
 
-            return this.logInController.authentication(login, password);
+            some_user = this.logInController.authentication(login, password);
+
+            if (some_user.getLogin() != null){
+                System.out.println("Login bem sucedido!\n");
+                return some_user;
+            } else{
+                System.out.println("Senha ou login incorreto\n");
+            }
         }
     }
 

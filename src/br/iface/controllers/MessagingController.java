@@ -17,7 +17,6 @@ public class MessagingController {
 
     public void showActiveChats(User current_user){
         UserData current_user_data = (UserData) current_user;
-        User some_user;
 
         int n_chats = current_user_data.getChats().size();
 

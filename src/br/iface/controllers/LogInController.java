@@ -18,7 +18,6 @@ public class LogInController {
             some_user = this.users.get(i);
             if (some_user.getLogin().equals(login)) {
                 if(some_user.getPass().equals(password)) {
-                    System.out.println("Login bem sucedido!\n");
                     return some_user;
                 }
                 else{
@@ -27,8 +26,7 @@ public class LogInController {
             }
         }
 
-        some_user =  new UserData();
-        System.out.println("Senha ou login incorreto\n");
+        some_user = new UserData();
         return some_user;
     }
 }

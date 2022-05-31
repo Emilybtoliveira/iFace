@@ -28,7 +28,7 @@ public class FeedService {
 
         while (true) {
             try {
-                System.out.printf("Escolha uma opção:\n1. Ver feed\n2. Criar novo post\n3. Ver meus posts\nDigite 0 para cancelar a operação.\n");
+                System.out.printf("Escolha uma opção:\n1. Ver feed\n2. Criar novo post\n3. Ver meus posts\nDigite qualquer outro número para cancelar a operação.\n");
                 op = input.nextInt();
 
                 if (op == 1) {
