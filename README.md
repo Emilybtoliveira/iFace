@@ -64,98 +64,99 @@ _Identificação e descrição de code smells no projeto_
 ### Funcionalidade: Menus das funcionalidades UpdateProfile, FriendsManagement, FeedService e CommunityManagement
 
 - **Métodos que fazem demais**
-  1. Mistura entre menu, entrada de usuário e chamada de controller, além de quantidade grande de condicionais.
 
-```java
-System.out.println("\nEssas são suas informações cadastradas:");
-System.out.println(current_login);
+      i. Mistura entre menu, entrada de usuário e chamada de controller, além de quantidade grande de condicionais.
 
-while (true){
-    try {
-        System.out.println("Qual informação você quer modificar?\n1. Login\n2. Senha\n3. Nome\n4. Nenhuma");
+	```java
+	System.out.println("\nEssas são suas informações cadastradas:");
+	System.out.println(current_login);
 
-        int op = input.nextInt();
+	while (true){
+	    try {
+		System.out.println("Qual informação você quer modificar?\n1. Login\n2. Senha\n3. Nome\n4. Nenhuma");
 
-        if(op > 0 && op < 5) {
-            System.out.println("\nDigite 0 a qualquer momento para cancelar a operação.");
+		int op = input.nextInt();
 
-            if (op == 1) {
-                login = signInProcedure.loginInput();
-                if (!login.equals("")) {
-                    updateProfileController.updateLogin(current_login, login);
-                }
-            } else if (op == 2) {
-            [...]
-            }
-```
+		if(op > 0 && op < 5) {
+		    System.out.println("\nDigite 0 a qualquer momento para cancelar a operação.");
 
-###### UpdateProfile.java
+		    if (op == 1) {
+			login = signInProcedure.loginInput();
+			if (!login.equals("")) {
+			    updateProfileController.updateLogin(current_login, login);
+			}
+		    } else if (op == 2) {
+		    [...]
+		    }
+	```
 
-
-
-```java
-System.out.printf("Escolha uma opção:\n1. Ver minhas solicitações recebidas\n" +
-        "2. Enviar nova solicitação de amizade.\n3. Ver minhas amizades\nDigite qualquer outro numero para cancelar a operação.\n");
-op = input.nextInt();
-
-//Ver minhas solicitações
-if (op == 1) {
-    friendsController.manageFriendsRequests(current_user);
-}
-//Solicitar nova amizade
-else if (op == 2) {
-    System.out.println("Insira o login do amigo que quer adicionar:");
-    String friend = input.next();
-
-    friendsController.newFriendRequest(current_user, friend);
-[...]
-```
-
-###### FriendsManagement.java
+	###### UpdateProfile.java
 
 
 
-```java
-System.out.printf("Escolha uma opção:\n1. Ver feed\n2. Criar novo post\n3. Ver meus posts\nDigite qualquer outro número para cancelar a operação.\n");
-op = input.nextInt();
+	```java
+	System.out.printf("Escolha uma opção:\n1. Ver minhas solicitações recebidas\n" +
+		"2. Enviar nova solicitação de amizade.\n3. Ver minhas amizades\nDigite qualquer outro numero para cancelar a operação.\n");
+	op = input.nextInt();
 
-if (op == 1) {
-    feedController.printFeed(current_user);
-} else if (op == 2) {
-    input.nextLine();
-    System.out.print("Escreva o conteúdo do post: ");
-    String content = input.nextLine();
+	//Ver minhas solicitações
+	if (op == 1) {
+	    friendsController.manageFriendsRequests(current_user);
+	}
+	//Solicitar nova amizade
+	else if (op == 2) {
+	    System.out.println("Insira o login do amigo que quer adicionar:");
+	    String friend = input.next();
 
-    while(true) {
-        try {
-            System.out.print("1. Post público para a rede\n2. Post privado para os meus amigos\nDigite qualquer número para cancelar a operação: ");
-            op = input.nextInt();
+	    friendsController.newFriendRequest(current_user, friend);
+	[...]
+	```
 
-            switch (op) {
-                case 1:
-                    new_post = new PostMessage(current_user, "public", content);
-                    feedController.newPublicPost(new_post);
-				[...]
-```
-
-###### feedService.java
+	###### FriendsManagement.java
 
 
 
-```java
-System.out.println("Escolha uma opção:\n1. Ver minhas comunidades\n2. Criar nova comunidade");
-op = input.nextInt();
+	```java
+	System.out.printf("Escolha uma opção:\n1. Ver feed\n2. Criar novo post\n3. Ver meus posts\nDigite qualquer outro número para cancelar a operação.\n");
+	op = input.nextInt();
 
-if (op == 1) {
-    int n_coms = communityController.showCommunities(current_user);
+	if (op == 1) {
+	    feedController.printFeed(current_user);
+	} else if (op == 2) {
+	    input.nextLine();
+	    System.out.print("Escreva o conteúdo do post: ");
+	    String content = input.nextLine();
 
-    if (n_coms == 0) {
-        return;
-    }
-    [...]
-```
+	    while(true) {
+		try {
+		    System.out.print("1. Post público para a rede\n2. Post privado para os meus amigos\nDigite qualquer número para cancelar a operação: ");
+		    op = input.nextInt();
 
-###### CommunityManagement.java
+		    switch (op) {
+			case 1:
+			    new_post = new PostMessage(current_user, "public", content);
+			    feedController.newPublicPost(new_post);
+					[...]
+	```
+
+	###### feedService.java
+
+
+
+	```java
+	System.out.println("Escolha uma opção:\n1. Ver minhas comunidades\n2. Criar nova comunidade");
+	op = input.nextInt();
+
+	if (op == 1) {
+	    int n_coms = communityController.showCommunities(current_user);
+
+	    if (n_coms == 0) {
+		return;
+	    }
+	    [...]
+	```
+
+	###### CommunityManagement.java
 
 
 
@@ -165,7 +166,7 @@ if (op == 1) {
 
 - **Código repetido**
 
-  1. Exceptions
+      i. Exceptions
 
      ```java
      catch (InputMismatchException e){
@@ -183,7 +184,7 @@ if (op == 1) {
      ```
 
      ###### SignIn.java
-
      
-
-[^ Concluido em]: 
+<hr>
+	
+	 Concluido em 07/06/2022
