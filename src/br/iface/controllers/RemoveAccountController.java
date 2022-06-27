@@ -1,14 +1,23 @@
-package br.iface.pages;
+package br.iface.controllers;
 
-import br.iface.entities.*;
-import br.iface.entities.relationships.*;
+import br.iface.entities.User;
+import br.iface.entities.relationships.CommunityFeed;
+import br.iface.entities.relationships.MessageFeed;
+import br.iface.entities.relationships.UserData;
+import br.iface.entities.relationships.UserFeed;
 
 import java.util.List;
 
-public class RemoveAccount {
-    public RemoveAccount(){}
+public class RemoveAccountController {
+    private List<User> users;
+    private UserFeed mainPublicFeed;
 
-    public void RemoveAccountRoutine(User current_user, List users, UserFeed mainPublicFeed){
+    public RemoveAccountController(List<User> users, UserFeed mainPublicFeed){
+        this.users = users;
+        this.mainPublicFeed = mainPublicFeed;
+    }
+
+    public void RemoveAccountRoutine(User current_user){
         int i;
         User some_user;
         CommunityFeed some_com;
@@ -59,14 +68,15 @@ public class RemoveAccount {
         }
 
         //excluir posts do feed publico
-        mainPublicFeed.removeMessagesFromUser(current_user);
+        this.mainPublicFeed.removeMessagesFromUser(current_user);
 
         //remove o usuario da lista de usuarios
-        users.remove(current_user);
+        this.users.remove(current_user);
 
         //remove as informações do usuario
         current_user_data.deleteAllInfo();
 
         System.out.println("Seus dados e sua conta foram excluídos. Se mudar de ideia, cadastre-se novamente!\n");
     }
+
 }

@@ -13,18 +13,48 @@ import java.util.Scanner;
 
 public class CommunityController {
     private List<User> users;
+    Scanner input = new Scanner(System.in);
 
     public CommunityController(List<User> users) {
         this.users = users;
     }
 
-    public boolean createACommunity(User owner, String name, String description){
+    public boolean createACommunity(User owner){
         UserData owner_data = (UserData) owner;
-        CommunityFeed new_com = new CommunityFeed(owner, name, description);
-        owner_data.setNewCommunity(new_com);
 
-        System.out.println("Comunidade criada!\nProcure-a no seu menu de comunidades para adicionar membros e fazer posts ;)\n");
+        input.nextLine();
+        System.out.println("Escolha um nome para a comunidade (digite 0 para cancelar a operação)");
+        String name = input.nextLine();
+
+        if (!name.equals("0")) {
+            System.out.println("Escreva uma breve descrição da comunidade: ");
+            String description = input.nextLine();
+            CommunityFeed new_com = new CommunityFeed(owner, name, description);
+            owner_data.setNewCommunity(new_com);
+
+            System.out.println("Comunidade criada!\nProcure-a no seu menu de comunidades para adicionar membros e fazer posts ;)\n");
+        }
+
         return true;
+    }
+
+    public void selectACommunity(User current_user){
+        int n_coms = showCommunities(current_user);
+
+        if (n_coms == 0) {
+            return;
+        }
+
+        System.out.println("Digite o numero da comunidade que deseja ver. Digite qualquer outro número para cancelar a operação.");
+        int op = input.nextInt();
+
+        if (op > 0 && op <= n_coms) {
+            optionsOnCommunity(current_user,op - 1);
+        } else {
+            System.out.println("Operação cancelada.");
+        }
+
+        return;
     }
 
     public int showCommunities(User current_user){
@@ -57,7 +87,6 @@ public class CommunityController {
         int op;
         String aux;
         UserData current_user_data = (UserData) current_user;
-        Scanner input = new Scanner(System.in);
 
         List<CommunityFeed> communities = current_user_data.getCommunities();
         CommunityFeed chosen_com = communities.get(com_index);
@@ -126,7 +155,6 @@ public class CommunityController {
 
     private void createNewPost(UserData current_user, CommunityFeed chosen_com){
         String content;
-        Scanner input = new Scanner(System.in);
 
         System.out.print("Escreva o conteúdo do post (digite 0 para cancelar operação): ");
         content = input.nextLine();

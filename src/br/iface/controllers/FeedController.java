@@ -6,7 +6,9 @@ import br.iface.entities.User;
 import br.iface.entities.relationships.UserData;
 import br.iface.entities.relationships.UserFeed;
 
+import java.util.InputMismatchException;
 import java.util.List;
+import java.util.Scanner;
 
 public class FeedController {
     UserFeed mainPublicFeed = new UserFeed();
@@ -17,6 +19,50 @@ public class FeedController {
         this.mainPublicFeed = mainPublicFeed;
     }
 
+    public void newPost(User current_user){
+        PostMessage new_post;
+        UserData current_user_data = (UserData) current_user;
+        Scanner input = new Scanner(System.in);
+
+        input.nextLine();
+        System.out.print("Escreva o conteúdo do post: ");
+        String content = input.nextLine();
+
+
+        while(true) {
+            try {
+                System.out.print("1. Post público para a rede\n2. Post privado para os meus amigos\nDigite qualquer número para cancelar a operação: ");
+                int op = input.nextInt();
+
+                switch (op) {
+                    case 1:
+                        new_post = new PostMessage(current_user, "public", content);
+                        this.newPublicPost(new_post);
+
+                        //adiciona à lista de posts do usuário
+                        current_user_data.setNewPost(new_post);
+                        break;
+                    case 2:
+                        new_post = new PostMessage(current_user_data, "private", content);
+                        this.newPrivatePost(new_post, current_user_data);
+
+                        //adiciona à lista de posts do usuário
+                        current_user_data.setNewPost(new_post);
+                        break;
+                    default:
+                        System.out.println("Operação cancelada.\n");
+                        return;
+                }
+
+                System.out.println("Seu post foi publicado!\n");
+                return;
+
+            } catch (InputMismatchException e) {
+                input.next(); //limpa o buffer
+                System.out.println("Você precisa inserir um número.\n");
+            }
+        }
+    }
     public void newPublicPost(PostMessage new_post){
         this.mainPublicFeed.addNewMessage(new_post);
     }

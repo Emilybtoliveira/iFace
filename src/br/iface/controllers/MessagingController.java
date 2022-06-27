@@ -90,10 +90,13 @@ public class MessagingController {
         }
     }
 
-    public void startAChat(User current_user, String recipient){
+    public void startAChat(User current_user){
         User some_user;
         UserData current_user_data = (UserData) current_user;
         Scanner input = new Scanner(System.in);
+
+        System.out.printf("Insira o login do usuário remetente: ");
+        String recipient = input.next();
 
         if(recipient.equals(current_user.getLogin())){
             System.out.println("Você não pode conversar consigo mesmo.\n");

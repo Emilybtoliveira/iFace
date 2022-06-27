@@ -2,8 +2,6 @@ package br.iface.controllers;
 
 import br.iface.entities.User;
 import br.iface.entities.relationships.UserData;
-import br.iface.pages.FeedService;
-
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
@@ -73,21 +71,25 @@ public class FriendsController {
         }
     }
 
-    public void newFriendRequest(User current_user, String friends_login){
+    public void newFriendRequest(User current_user){
         User some_user;
         UserData some_user_data;
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("Insira o login do amigo que quer adicionar:");
+        String friend = input.next();
 
         //Nao pode solicitar a si mesmo
-        if(friends_login.equals(current_user.getLogin())){
+        if(friend.equals(current_user.getLogin())){
             System.out.println("Você não pode solicitar amizade a si mesmo.");
         }
-        else if(isAlreadyAFriend(current_user, friends_login)){
-            System.out.printf("Você já é amigo de %s.\n", friends_login);
+        else if(isAlreadyAFriend(current_user, friend)){
+            System.out.printf("Você já é amigo de %s.\n", friend);
         }
         else{
             for (int i = 0; i < this.users.size(); i++) {
                 some_user = this.users.get(i);
-                if (some_user.getLogin().equals(friends_login)) {
+                if (some_user.getLogin().equals(friend)) {
                     //System.out.printf("Login:%s Senha:%s Nome:%s\n", some_user.getLogin(), some_user.getPass(), some_user.getName());
                     some_user_data = (UserData) some_user;
 

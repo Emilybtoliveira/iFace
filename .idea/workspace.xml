@@ -1,22 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5b5edda6-53a5-4e91-89e3-e9e9de5a58b8" name="Changes" comment="modificações em formatação de print">
-      <change afterPath="$PROJECT_DIR$/src/br/iface/validations/InputValidations.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/br/iface/validations/InvalidInputException.java" afterDir="false" />
+    <list default="true" id="5b5edda6-53a5-4e91-89e3-e9e9de5a58b8" name="Changes" comment="conclusão de tratamento de exceção">
+      <change afterPath="$PROJECT_DIR$/src/br/iface/controllers/RemoveAccountController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/iface/core/App.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/iface/core/Dependencies.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/iface/core/Input.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/iface/core/Menu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/iface/core/menus/CommunityManageMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/iface/core/menus/FeedServiceMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/iface/core/menus/FriendsManagementMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/iface/core/menus/HomeMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/iface/core/menus/LoginMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/iface/core/menus/MessagingServiceMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/iface/core/menus/RemoveAccountMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/iface/core/menus/SignInMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/iface/core/menus/SwitchAccountMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/iface/core/menus/UnloggedMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/iface/core/menus/UpdateProfileMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/iface/core/modules/Community.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/iface/core/modules/FeedService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/iface/core/modules/Friends.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/iface/core/modules/Home.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/iface/core/modules/Messaging.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/iface/core/modules/Module.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/iface/core/modules/Unlogged.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/iface/core/modules/UpdateProfile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/br/iface/controllers/CommunityController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/iface/controllers/CommunityController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/iface/controllers/FeedController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/iface/controllers/FeedController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/iface/controllers/FriendsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/iface/controllers/FriendsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/br/iface/controllers/LogInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/iface/controllers/LogInController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/br/iface/controllers/MessagingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/iface/controllers/MessagingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/iface/pages/CommunityManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/iface/pages/CommunityManagement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/iface/pages/FeedService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/iface/pages/FeedService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/iface/pages/FriendsManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/iface/pages/FriendsManagement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/iface/pages/LogIn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/iface/pages/LogIn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/iface/pages/MessagingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/iface/pages/MessagingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/iface/pages/SignIn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/iface/pages/SignIn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/iface/pages/UpdateProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/iface/pages/UpdateProfile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/iface/controllers/SignInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/iface/controllers/SignInController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/iface/controllers/UpdateProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/iface/controllers/UpdateProfileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/iface/pages/CommunityManagement.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/iface/pages/FeedService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/iface/pages/FriendsManagement.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/iface/pages/LogIn.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/iface/pages/MainMenu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/iface/pages/MessagingService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/iface/pages/RemoveAccount.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/iface/pages/SignIn.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/iface/pages/UpdateProfile.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +53,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -135,7 +163,11 @@
       <workItem from="1653856655384" duration="28000" />
       <workItem from="1653857181634" duration="9000" />
       <workItem from="1653866536382" duration="603000" />
-      <workItem from="1653999268028" duration="1233000" />
+      <workItem from="1653999268028" duration="1544000" />
+      <workItem from="1654304888380" duration="3507000" />
+      <workItem from="1656071958428" duration="17733000" />
+      <workItem from="1656246098743" duration="7869000" />
+      <workItem from="1656268572904" duration="16965000" />
     </task>
     <task id="LOCAL-00001" summary="ajuste final">
       <created>1649274134143</created>
@@ -144,7 +176,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649274134143</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="conclusão de tratamento de exceção">
+      <created>1654000744700</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1654000744700</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -214,7 +253,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="ajuste final" />
-    <option name="LAST_COMMIT_MESSAGE" value="ajuste final" />
+    <MESSAGE value="conclusão de tratamento de exceção" />
+    <option name="LAST_COMMIT_MESSAGE" value="conclusão de tratamento de exceção" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
