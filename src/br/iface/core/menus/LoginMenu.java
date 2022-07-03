@@ -11,22 +11,27 @@ import java.util.Scanner;
 public class LoginMenu extends Menu{
     private Menu next_menu;
     private LogInController loginController;
-
+    private String last_chosen_option;
     public LoginMenu(Dependencies app_dependencies) {
         super(app_dependencies);
-        this.next_menu = new UnloggedMenu(app_dependencies);
         this.loginController = new LogInController(app_dependencies);
+        this.last_chosen_option = "unlogged";
     }
 
     @Override
     public void Menu(){
         if(this.loginController.executeLogin()){
-            this.setNextMenu();
+            this.last_chosen_option = "home";
         }
+        this.setNextMenu();
     }
 
     private void setNextMenu(){
-        this.next_menu = new HomeMenu(app_dependencies);
+        if (this.last_chosen_option.equals("home")){
+            this.next_menu = new HomeMenu(app_dependencies);
+        } else{
+            this.next_menu = new UnloggedMenu(app_dependencies);
+        }
     }
 
     @Override

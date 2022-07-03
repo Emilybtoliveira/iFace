@@ -41,6 +41,8 @@ public class MessagingServiceMenu extends Menu {
     }
 
     public void setNextMenu(){
+        this.next_menu = new MessagingServiceMenu(app_dependencies);
+
         if (this.last_chosen_option.equals("chats")) {
             messagingController.showActiveChats(app_dependencies.getCurrentUser());
         } else if (this.last_chosen_option.equals("newchat")) {
@@ -48,8 +50,6 @@ public class MessagingServiceMenu extends Menu {
         } else{
             this.next_menu = new HomeMenu(app_dependencies);
         }
-
-        this.next_menu = new MessagingServiceMenu(app_dependencies);
     }
 
     @Override

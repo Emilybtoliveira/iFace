@@ -39,7 +39,9 @@ public class FriendsManagementMenu extends Menu{
     }
 
     protected void setNextMenu(){
-       if(this.last_chosen_option.equals("requests")) {
+        this.next_menu = new FriendsManagementMenu(app_dependencies);
+
+        if(this.last_chosen_option.equals("requests")) {
 
            friendsController.manageFriendsRequests(app_dependencies.getCurrentUser());
 
@@ -51,9 +53,10 @@ public class FriendsManagementMenu extends Menu{
 
            friendsController.showMyFriends(app_dependencies.getCurrentUser());
 
+       }else{
+           this.next_menu = new HomeMenu(app_dependencies);
        }
 
-       this.next_menu = new HomeMenu(app_dependencies);
     }
 
     @Override

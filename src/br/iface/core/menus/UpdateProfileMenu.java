@@ -19,7 +19,6 @@ public class UpdateProfileMenu extends Menu {
         this.updateProfileModule = new UpdateProfile();
         this.updateProfileController = new UpdateProfileController(app_dependencies);
         this.last_chosen_option = "";
-        this.next_menu = new HomeMenu(app_dependencies);
     }
 
     public void Menu(){
@@ -46,7 +45,7 @@ public class UpdateProfileMenu extends Menu {
             this.next_menu = new UpdateProfileMenu(app_dependencies);
 
         }else{
-            System.out.printf("Alterações feitas com sucesso!\n", app_dependencies.getCurrentUser());
+            System.out.printf("Alterações feitas com sucesso!\n\n", app_dependencies.getCurrentUser());
 
             System.out.println(app_dependencies.getCurrentUser());
             this.next_menu = new HomeMenu(app_dependencies);

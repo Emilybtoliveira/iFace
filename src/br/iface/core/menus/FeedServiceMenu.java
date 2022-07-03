@@ -20,7 +20,6 @@ public class FeedServiceMenu extends Menu{
 
     public FeedServiceMenu(Dependencies app_dependencies) {
         super(app_dependencies);
-        this.next_menu = new HomeMenu(app_dependencies);
         this.feedController = new FeedController(app_dependencies.getMainPublicFeed());
         this.feed_module = new FeedService();
         this.last_chosen_option = "";
@@ -42,6 +41,8 @@ public class FeedServiceMenu extends Menu{
     }
 
     private void setNextMenu(){
+        this.next_menu = new FeedServiceMenu(app_dependencies);
+
         if(this.last_chosen_option.equals("feed")) {
 
             feedController.printFeed(app_dependencies.getCurrentUser());
@@ -57,8 +58,6 @@ public class FeedServiceMenu extends Menu{
         } else{
             this.next_menu = new HomeMenu(app_dependencies);
         }
-
-        this.next_menu = new FeedServiceMenu(app_dependencies);
     }
 
     @Override

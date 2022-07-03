@@ -116,6 +116,7 @@ public class MessagingController {
                         UserData some_user_data = (UserData) some_user;
 
                         //recebe a mensagem
+                        input.nextLine();
                         System.out.printf("Digite a mensagem: ");
                         String content = input.nextLine();
 

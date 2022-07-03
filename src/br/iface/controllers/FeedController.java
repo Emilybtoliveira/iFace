@@ -24,7 +24,7 @@ public class FeedController {
         UserData current_user_data = (UserData) current_user;
         Scanner input = new Scanner(System.in);
 
-        input.nextLine();
+        //input.nextLine();
         System.out.print("Escreva o conteúdo do post: ");
         String content = input.nextLine();
 

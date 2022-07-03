@@ -12,11 +12,12 @@ import java.util.Scanner;
 public class RemoveAccountMenu extends Menu {
     private Menu next_menu;
     private RemoveAccountController removeAccountController;
+    private String last_chosen_option;
 
     public RemoveAccountMenu(Dependencies app_dependencies) {
         super(app_dependencies);
-        this.next_menu = new HomeMenu(app_dependencies);
         this.removeAccountController = new RemoveAccountController(app_dependencies.getUsers(), app_dependencies.getMainPublicFeed());
+        this.last_chosen_option = "cancel";
     }
 
     @Override
@@ -28,16 +29,22 @@ public class RemoveAccountMenu extends Menu {
         if(bool.equals("s") || bool.equals("S")){
             removeAccountController.RemoveAccountRoutine(app_dependencies.getCurrentUser());
             app_dependencies.setCurrentUser(new UserData());
-            this.setNextMenu();
+            last_chosen_option = "remove";
         } else if(bool.equals("n") || bool.equals("N")){
             System.out.println("Operação cancelada.\n");
         } else{
             System.out.println("Opção inexistente. Abortado.\n");
         }
+
+        this.setNextMenu();
     }
 
     private void setNextMenu(){
-        this.next_menu = new UnloggedMenu(app_dependencies);
+        if (last_chosen_option.equals("remove")) {
+            this.next_menu = new UnloggedMenu(app_dependencies);
+        } else{
+            this.next_menu = new HomeMenu(app_dependencies);
+        }
     }
 
     @Override

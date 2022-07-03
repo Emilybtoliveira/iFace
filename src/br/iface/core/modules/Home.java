@@ -1,21 +1,25 @@
 package br.iface.core.modules;
 
+import br.iface.core.Dependencies;
+import br.iface.core.Menu;
+import br.iface.core.menus.*;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class Home extends Module {
-    private Map<Integer, String> menu_map;
+    private Map<Integer, Menu> menu_map;
 
-    public Home(){
+    public Home(Dependencies app_dependencies){
         this.menu_map = new HashMap<>();
-        this.menu_map.put(1, "update");
-        this.menu_map.put(2, "friendsmanage");
-        this.menu_map.put(3, "chats");
-        this.menu_map.put(4, "community");
-        this.menu_map.put(5, "feed");
-        this.menu_map.put(6, "delete");
-        this.menu_map.put(7, "switchacc");
-        this.menu_map.put(8, "quit");
+        this.menu_map.put(1, new UpdateProfileMenu(app_dependencies));
+        this.menu_map.put(2, new FriendsManagementMenu(app_dependencies));
+        this.menu_map.put(3, new MessagingServiceMenu(app_dependencies));
+        this.menu_map.put(4, new CommunityManageMenu(app_dependencies));
+        this.menu_map.put(5, new FeedServiceMenu(app_dependencies));
+        this.menu_map.put(6, new RemoveAccountMenu(app_dependencies));
+        this.menu_map.put(7, new SwitchAccountMenu(app_dependencies));
+        this.menu_map.put(8, new Menu(app_dependencies));
         //System.out.println(this.menu_map.get(3));
     }
 

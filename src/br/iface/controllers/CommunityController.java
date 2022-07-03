@@ -22,7 +22,7 @@ public class CommunityController {
     public boolean createACommunity(User owner){
         UserData owner_data = (UserData) owner;
 
-        input.nextLine();
+       // input.nextLine();
         System.out.println("Escolha um nome para a comunidade (digite 0 para cancelar a operação)");
         String name = input.nextLine();
 
@@ -157,7 +157,10 @@ public class CommunityController {
         String content;
 
         System.out.print("Escreva o conteúdo do post (digite 0 para cancelar operação): ");
+
+        input.nextLine();
         content = input.nextLine();
+        System.out.println(content);
 
         if(!content.equals("0")) {
             PostMessage new_post = new PostMessage(current_user, content, chosen_com);

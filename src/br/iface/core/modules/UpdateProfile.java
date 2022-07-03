@@ -1,5 +1,6 @@
 package br.iface.core.modules;
 
+import br.iface.core.Dependencies;
 import br.iface.core.menus.UpdateProfileMenu;
 
 import java.util.HashMap;

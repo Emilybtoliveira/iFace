@@ -13,7 +13,6 @@ public class SignInMenu extends Menu {
         super(app_dependencies);
         this.signInController = new SignInController(app_dependencies);
         this.last_chosen_option = "";
-        this.next_menu = new UnloggedMenu(app_dependencies);
     }
 
     public void Menu(){

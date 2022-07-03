@@ -20,7 +20,6 @@ public class CommunityManageMenu extends Menu{
 
     public CommunityManageMenu(Dependencies app_dependencies) {
         super(app_dependencies);
-        this.next_menu = new HomeMenu(app_dependencies);
         this.communityController = new CommunityController(app_dependencies.getUsers());
         this.community_module = new Community();
     }
@@ -37,10 +36,14 @@ public class CommunityManageMenu extends Menu{
         Map menu_map = this.community_module.getMap();
         this.last_chosen_option = (String) menu_map.get(option);
 
-        if(this.last_chosen_option == null){this.last_chosen_option = "";}
+       if(this.last_chosen_option == null){
+            this.last_chosen_option = "";
+        }
     }
 
     private void setNextMenu(){
+        this.next_menu = new CommunityManageMenu(app_dependencies);
+
         if (last_chosen_option.equals("coms")) {
             communityController.selectACommunity(app_dependencies.getCurrentUser());
         } else if (last_chosen_option.equals("newcom")) {
@@ -48,7 +51,6 @@ public class CommunityManageMenu extends Menu{
         } else{
             this.next_menu = new HomeMenu(app_dependencies);
         }
-        this.next_menu = new CommunityManageMenu(app_dependencies);
     }
 
     @Override

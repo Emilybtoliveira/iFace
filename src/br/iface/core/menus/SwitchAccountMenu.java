@@ -11,10 +11,11 @@ import java.util.Scanner;
 
 public class SwitchAccountMenu extends Menu {
     private Menu next_menu;
+    private String last_chosen_option;
 
     public SwitchAccountMenu(Dependencies app_dependencies) {
         super(app_dependencies);
-        this.next_menu = new HomeMenu(app_dependencies);
+        this.last_chosen_option = "cancel";
     }
 
     @Override
@@ -25,7 +26,7 @@ public class SwitchAccountMenu extends Menu {
         String bool = input.next();
 
         if(bool.equals("s") || bool.equals("S")){
-            this.setNextMenu();
+            this.last_chosen_option = "unlog";
             app_dependencies.setCurrentUser(new UserData());
             System.out.println("Você foi deslogado.\n");
         } else if(bool.equals("n") || bool.equals("N")){
@@ -33,11 +34,17 @@ public class SwitchAccountMenu extends Menu {
         } else{
             System.out.println("Opção inexistente. Abortado.\n");
         }
+
+        this.setNextMenu();
     }
 
 
     public void setNextMenu(){
-        this.next_menu = new UnloggedMenu(app_dependencies);
+        if (last_chosen_option.equals("unlog")) {
+            this.next_menu = new UnloggedMenu(app_dependencies);
+        } else{
+            this.next_menu = new HomeMenu(app_dependencies);
+        }
     }
 
     @Override

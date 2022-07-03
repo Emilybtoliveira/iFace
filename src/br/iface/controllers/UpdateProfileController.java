@@ -22,17 +22,21 @@ public class UpdateProfileController {
         if (attribute.equals("login")) {
 
             String login = input.getUserLogin(new SignInController(app_dependencies));
-            this.updateLogin(app_dependencies.getCurrentUser(), login);
-
+            if(!login.equals("")) {
+                this.updateLogin(app_dependencies.getCurrentUser(), login);
+            }
         } else if (attribute.equals("pass")){
 
             String password = input.getUserPass();
-            this.updatePass(app_dependencies.getCurrentUser(), password);
-
+            if(!password.equals("")) {
+                this.updatePass(app_dependencies.getCurrentUser(), password);
+            }
         } else if (attribute.equals("name")){
 
             String name = input.getUserName();
-            this.updateName(app_dependencies.getCurrentUser(), name);
+            if(!name.equals("")) {
+                this.updateName(app_dependencies.getCurrentUser(), name);
+            }
         }
 
         return true;
